@@ -2,6 +2,7 @@ package com.example.android.sunshine;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,6 +56,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void shareWeather() {
-        // todo share text
+        ShareCompat.IntentBuilder.from(this)
+                .setText(mForecast + FORECAST_SHARE_HASHTAG)
+                .setType("text/plain")
+                .setChooserTitle("Escolha onde quer compartilhar o tempo:")
+                .startChooser();
     }
 }
