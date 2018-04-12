@@ -38,6 +38,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements ForecastAdapterOnClickHandler {
 
+    public static final String EXTRA_WEATHER_PARAM_KEY = "extra_weather_param_key";
     private RecyclerView mRecyclerView;
     private ForecastAdapter mForecastAdapter;
 
@@ -119,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
         Context context = this;
         Class destinationClass = DetailActivity.class;
         Intent intentToStartDetailActivity = new Intent(context, destinationClass);
-        // TODO (1) Pass the weather to the DetailActivity
+        // (1) Pass the weather to the DetailActivity
+        intentToStartDetailActivity.putExtra(EXTRA_WEATHER_PARAM_KEY, weatherForDay);
         startActivity(intentToStartDetailActivity);
     }
 
