@@ -17,8 +17,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         // (2) Display the weather forecast that was passed from MainActivity
-        if (getIntent().getExtras() != null && getIntent().hasExtra(MainActivity.EXTRA_WEATHER_PARAM_KEY)) {
-            weather = getIntent().getExtras().getString(MainActivity.EXTRA_WEATHER_PARAM_KEY);
+        if (getIntent().hasExtra(MainActivity.EXTRA_WEATHER_PARAM_KEY)) {
+            weather = getIntent().getStringExtra(MainActivity.EXTRA_WEATHER_PARAM_KEY);
         } else {
             throw new IllegalArgumentException("Activity espera parametro weather");
         }
