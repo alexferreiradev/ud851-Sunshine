@@ -221,8 +221,15 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
+        // (2) Launch the map when the map menu item is clicked
+        if (id == R.id.action_share_location) {
+            shareLocation();
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void shareLocation() {
+        // todo open map
     }
 }
