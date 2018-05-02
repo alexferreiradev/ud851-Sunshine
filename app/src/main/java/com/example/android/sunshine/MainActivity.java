@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,7 @@ import android.widget.TextView;
 import com.example.android.sunshine.data.SunshinePreferences;
 import com.example.android.sunshine.utilities.NetworkUtils;
 import com.example.android.sunshine.utilities.OpenWeatherJsonUtils;
+import com.example.android.sunshine.view.SettingsActivity;
 
 import java.net.URL;
 
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements
         getSupportLoaderManager().initLoader(loaderId, bundleForLoader, callback);
 
         Log.d(TAG, "onCreate: registering preference changed listener");
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     /**
@@ -346,12 +350,23 @@ public class MainActivity extends AppCompatActivity implements
             return true;
         }
 
-        // TODO (1) Add new Activity called SettingsActivity using Android Studio wizard
-        // Do step 2 in SettingsActivity
-        // TODO (2) Set setDisplayHomeAsUpEnabled to true on the support ActionBar
+        if (id == R.id.action_settings) {
+            openSettings();
+            return true;
+        }
 
-        // TODO (6) Launch SettingsActivity when the Settings option is clicked
+        //(1) Add new Activity called SettingsActivity using Android Studio wizard
+        // Do step 2 in SettingsActivity
+        // (2) Set setDisplayHomeAsUpEnabled to true on the support ActionBar
+
+
+        // (6) Launch SettingsActivity when the Settings option is clicked
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }
